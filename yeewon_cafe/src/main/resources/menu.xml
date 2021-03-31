@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+	
+<mapper namespace="com.yeewon.guestbook.model.mapper.MenuDao">
+	<select id="popularList" resultType="menu">
+		select idx, pid, pname, price, picture, cnt
+		from yeewon_book
+		order by cnt desc limit 0, 4;
+	</select>
+	
+	
+	<select id="menuList" resultType="menu">
+		select idx, pid, pname, price, picture, cnt
+		from yeewon_book
+		order by idx desc limit 0, 4;
+	</select>
+	
+	<select id="menuInfo" parameterType="String" resultType="menu">
+		select idx, pid, pname, price, picture, cnt
+		from yeewon_book
+		where pid = #{pid}
+	</select>
+</mapper>

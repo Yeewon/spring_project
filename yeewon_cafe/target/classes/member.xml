@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.yeewon.guestbook.model.mapper.UserDao">
+
+	<select id="login" parameterType="map" resultType="member">
+		select username, userid, email
+		from yeewon_member
+		where userid = #{userid} and userpwd = #{userpwd}
+	</select>
+	
+	<select id="userList" resultType="member">
+		select userid, userpwd, username, email, address, date_format(joindate, '%y.%m.%d') joindate
+		from yeewon_member
+		order by joindate desc;
+	</select>
+	
+	<select id="userInfo" parameterType="String" resultType="member">
+		select userid, userpwd, username, email, address, date_format(joindate, '%y.%m.%d') joindate
+		from yeewon_member
+		where userid = #{userid}
+	</select>
+	
+	<insert id="userRegister" parameterType="member">
+		insert into yeewon_member (userid, userpwd, username, email, address, joindate)
+		values (#{userid}, #{userpwd}, #{username}, #{email}, #{address}, now())
+	</insert>
+	
+	<update id="userModify" parameterType="member">
+		update yeewon_member
+		set userpwd = #{userpwd}, email = #{email}, address = #{address}
+		where userid = #{userid}
+	</update>
+	
+	<delete id="userDelete" parameterType="String">
+		delete from yeewon_member
+		where userid = #{userid}
+	</delete>
+	
+</mapper>
