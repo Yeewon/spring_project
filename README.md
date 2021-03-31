@@ -1,5 +1,5 @@
 <p align="middle" >
-  <img src="./README_1.JPG"/>
+  <img src="./src/img/README_1.JPG"/>
 </p>
 <h2 align="middle">My Portfolio</h2>
 <p align="middle">자바스크립트와 AJAX를 이용하여 구현한 투두리스트</p> 
@@ -20,18 +20,29 @@
 
 <p align="middle">
   <h2 align="middle">TODO LIST</h2>
-  <img src="./README_TODO.JPG">
-  <img src="./README_TODODETAIL.JPG">
+  <img src="./src/img/README_TODO.JPG">
+  <img src="./src/img/README_TODODETAIL.JPG">
 </p>
 
 <p align="middle">
   <h2 align="middle">BOOKSTORE</h2>
-  <img src="./README_BOOK.JPG" align="middle">
-  <img src="./README_BOOKDETAIL.JPG" align="middle">
+  <div align="middle">
+    <img src="./src/img/README_BOOK.JPG">
+    <img src="./src/img/README_BOOKDETAIL.JPG">
+  </div>
 </p>
 
-<p align="middle">
-  <a href="">🖥️ 데모 링크</a>
+<div align="middle">
+  <h2 align="middle">🖥️ 데모 영상</h2>
+    <h3>LOGIN</h3>
+    <img src="./src/img/login.gif" align="middle">
+    <h3>BOOKLIST</h3>
+    <img src="./src/img/booklist.gif" align="middle">
+    <h3>REVIEW</h3>
+    <img src="./src/img/writeReview.gif" align="middle">
+    <h3>ADMIN PAGE</h3>
+    <img src="./src/img/adminPage.gif" align="middle">
+</div>
 </p>
 
 <br/>
