@@ -20,8 +20,10 @@
 
 <p align="middle">
   <h2 align="middle">TODO LIST</h2>
-  <img src="./src/img/README_TODO.JPG">
-  <img src="./src/img/README_TODODETAIL.JPG">
+  <div align="middle">
+    <img src="./src/img/README_TODO.JPG">
+    <img src="./src/img/README_TODODETAIL.JPG">
+  </div>
 </p>
 
 <p align="middle">
