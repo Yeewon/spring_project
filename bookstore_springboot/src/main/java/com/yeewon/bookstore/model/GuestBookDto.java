@@ -9,6 +9,7 @@ public class GuestBookDto {
 	private String userid;
 	private String subject;
 	private String content;
+	private int score;
 	private String regtime;
 
 	public int getArticleno() {
@@ -49,6 +50,14 @@ public class GuestBookDto {
 
 	public void setRegtime(String regtime) {
 		this.regtime = regtime;
+	}
+
+	public int getScore() {
+		return score;
+	}
+
+	public void setScore(int score) {
+		this.score = score;
 	}
 
 }

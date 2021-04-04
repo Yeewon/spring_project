@@ -1,7 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%-- <%@ taglib prefix="f" uri="http://www.springframework.org/tags/form"%> --%>
 
 <c:set var="root" value="${pageContext.request.contextPath}"/>
 <c:if test="${userinfo == null}">
@@ -20,6 +19,9 @@
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js"></script>
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js"></script>
 
+	<!-- raty plugin -->
+	<script type="text/javascript" src="${root}/resources/js/jquery.raty.min.js"></script>
+	
 	<!-- Font Awesome icons (free version)-->
 	<script src="https://use.fontawesome.com/releases/v5.15.1/js/all.js" crossorigin="anonymous"></script>
 	
@@ -45,6 +47,8 @@
 				$("#writeform").attr("action", "${root}/article/write").submit();
 			}
 		});
+	  $('#star').raty();
+	  
 	});
   </script>
 </head>
@@ -60,19 +64,17 @@
 	</div>
 	<div class="col-lg-6" align="center">
 		<h2>REVIEW 작성</h2>
-<%-- 		<f:form>
-			<f:label path="rating">평점</f:label>
-			<f:select path="rating">
-				<f:options items="${ratingOptions}"/>
-			</f:select>
-		</f:form> --%>
 		<form id="writeform" method="post" action="">
 			<div class="form-group" align="left">
 				<label for="subject">제목</label>
-				<input type="text" class="form-control" id="subject" name="subject">
+				<input type="text" class="form-control" id="subject" name="subject" maxlength="20" placeholder="20자 이내로 작성해 주세요.">
 			</div>
 			<div class="form-group" align="left">
-				<label for="content">내용</label>
+				<label for="score">평점</label>
+				<a id="star"></a>
+			</div>
+			<div class="form-group" align="left">
+				<label for="content">리뷰</label>
 				<textarea class="form-control" rows="15" id="content" name="content"></textarea>
 			</div>
 			<button type="button" id="writeBtn"  class="btn btn-warning">글작성</button>

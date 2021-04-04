@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <c:set var="root" value="${pageContext.request.contextPath}"/>
 <c:if test="${userinfo == null}">
 	<c:redirect url="/"/>
@@ -48,8 +49,8 @@
 				$("#pg").val(($(this).attr("data-pg")));
 				$("#pageform").attr("action", "${root}/article/list").submit();
 			});
-			
 		});
+
 
 		</script>
 	</head>
@@ -90,64 +91,41 @@
 	  	</tr>
 	  </table>
 	  </form>
-	  <!-- <table class="table table-borderless">
-	  	<tr>
-	  		<td align="right">
-		  	  <select class="form-control" name="spp" id="spp" onchange="javascript:countList();">
-			    <option value="10" selected="selected">10개씩보기</option>
-			    <option value="20">20개씩보기</option>
-			    <option value="50">50개씩보기</option>
-			  </select>
-			</td>
-	  	</tr>
-	  </table> -->
 	  <c:if test="${articles.size() != 0}">
-	  		<table>
-	  			<thead>
-			  		<tr>
-						<th id="no">글번호</th>
-						<th id="id">작성자</th>
-						<th id="subject">리뷰</th>
-						<th id="content"></th>
-						<th id="regtime">작성일</th>
-						<th></th>
-					</tr>
-				</thead>
+	  		<table style="text-align: center;">
+		  		<tr>
+					<th id="no">no</th>
+					<th id="id">id</th>
+					<th id="subject">review</th>
+					<th id="content">content</th>
+					<th id="score">score<th>
+					<th id="regtime"></th>
+					<th id="control"></th>
+				</tr>
+
 			  	<c:forEach var="article" items="${articles}">
 				  <tr>
 				  	<td id="no">${article.articleno}</td>
 				  	<td id="id">${article.userid}</td>
 				  	<td id="subject">${article.subject}</td>
 				  	<td id="content">${article.content}</td>
-				  	<td id="regtime">${article.regtime}</td>
-				  	
-				  	<td>
+				  	<td id="score">
+				  		<c:forEach var="i" begin="1" end="${article.score}">
+				  			<img src="${root}/resources/img/star-on.png" style="width:15px; margin: -1.5px;">
+				  		</c:forEach>
+				  
+				  	</td>
+				  	<td id="regtime">
+				  		<c:set var="date" value="${fn:split(article.regtime, ' ')}"></c:set>
+				  		<c:out value="${date[0]}"></c:out>
+				  	</td>	  	
+				  	<td id="control">
 					  	<c:if test="${userinfo.userid == article.userid}">
 					  		<a href="${root}/article/modify?articleno=${article.articleno}">수정</a>
 							<a href="${root}/article/delete?articleno=${article.articleno}">삭제</a>
 						</c:if>
 					</td>
 				  </tr>
-	<%-- 			    <tbody>
-				      <tr class="table-info">
-				        <td>작성자 : ${article.userid}</td>
-				        <td align="right">작성일 : ${article.regtime}</td>
-				      </tr>
-				      <tr>
-				        <td colspan="2" class="table-danger"><strong>${article.articleno}. ${article.subject}</strong></td>
-				      </tr>
-				      <tr>
-				        <td colspan="2">${article.content}</td>
-				      </tr>
-				      <c:if test="${userinfo.userid == article.userid}">
-				      <tr>
-				        <td colspan="2">
-						<a href="${root}/article/modify?articleno=${article.articleno}">수정</a>
-						<a href="${root}/article/delete?articleno=${article.articleno}">삭제</a>
-						</td>
-				      </tr>
-				      </c:if>
-				    </tbody> --%>
 			  	</c:forEach>
 		  	</table>
 		  	<table>

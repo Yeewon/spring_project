@@ -5,12 +5,12 @@
 <mapper namespace="com.yeewon.bookstore.model.mapper.GuestBookMapper">
 
 	<insert id="writeArticle" parameterType="GuestBookDto">
-		insert into guestbook (userid, subject, content, regtime)
-		values (#{userid}, #{subject}, #{content}, now())
+		insert into guestbook (userid, score, subject, content, regtime)
+		values (#{userid}, #{score}, #{subject}, #{content}, now())
 	</insert>
 	
 	<select id="listArticle" parameterType="map" resultType="GuestBookDto">
-		select articleno, userid, subject, content, regtime
+		select articleno, userid, score, subject, content, regtime
 		from guestbook
 		<if test="word != null and word != ''">
 			<if test="key == 'subject'">
@@ -38,14 +38,14 @@
 	</select>
 	
 	<select id="getArticle" parameterType="int" resultType="GuestBookDto">
-		select articleno, userid, subject, content, regtime
+		select articleno, userid, score, subject, content, regtime
 		from guestbook
 		where articleno = #{articleno}
 	</select>
 	
 	<update id="modifyArticle" parameterType="GuestBookDto">
 		update guestbook
-		set subject = #{subject}, content = #{content}
+		set subject = #{subject}, content = #{content}, score = #{score}
 		where articleno = #{articleno}
 	</update>
 	

@@ -290,7 +290,7 @@
 
       <!-- Modal body -->
       <div class="modal-body">
-       	<table class="table table-bordered">
+       	<table class="table table-bordered" style="text-align:center;">
             <colgroup>
                 <col width="120">
                 <col width="*">

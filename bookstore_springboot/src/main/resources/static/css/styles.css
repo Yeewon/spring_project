@@ -256,13 +256,26 @@ th {
     text-align: -webkit-match-parent;
 }
 
-#subject, #content {
-     width:500px;
+table #subject {
+	 width:50px;
+     overflow:hidden;
+     text-overflow:ellipsis;
+     white-space:nowrap;
+	
+}
+
+table #content {
+     width:300px;
      overflow:hidden;
      text-overflow:ellipsis;
      white-space:nowrap;
      display : block;
 }
+
+table #score, table #regtime{
+	width : 100px;
+}
+
 
 label {
     display: inline-block;
@@ -11009,3 +11022,6 @@ a.section-subheading.text-muted img:hover {
 	opacity: 0.5;
 }
 
+table.table.table-hover {
+    text-align: center;
+}
